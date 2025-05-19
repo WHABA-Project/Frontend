@@ -5,20 +5,11 @@ import RegisterPage from "./pages/RegisterSelect";
 import GuideRegister from "./pages/GuideRegister";
 import TravelerRegister from "./pages/TravelerRegister1";
 import TravelerRegister2 from "./pages/TravelerRegister2";
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/login";
-import FindId from "./pages/FindId";
-import FindPw from "./pages/FindPw";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/FindId" element={<FindId />} />
-        <Route path="/FindPw" element={<FindPw />} />
-  
         <Route path="/" element={<MainPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/guideregister" element={<GuideRegister />} />
