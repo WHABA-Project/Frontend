@@ -5,7 +5,7 @@ import FilterSidebar from "../components/FilterSidebar";
 import GuideList from "../components/GuideList";
 import Footer from "../components/Footer";
 
-const MainPage = () => {
+const Guides = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -27,4 +27,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Guides;

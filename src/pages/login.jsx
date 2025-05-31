@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Login() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    // TODO: 실제 로그인 API 연동
     console.log("로그인 시도:", { email, password });
-    navigate("/main"); // 로그인 후 이동 경로
+    // TODO: 로그인 API 연동
   };
 
   return (
@@ -59,23 +57,17 @@ export default function Login() {
       </form>
 
       <div className="mt-12 text-sm text-center text-black space-x-4">
-        <button
-          className="hover:underline"
-          onClick={() => navigate("/find-id")}
-        >
+        <Link to="/FindId" className="hover:underline">
           아이디 찾기
-        </button>
+        </Link>
         <span>|</span>
-        <button
-          className="hover:underline"
-          onClick={() => navigate("/find-password")}
-        >
+        <Link to="/FindPw" className="hover:underline">
           비밀번호 찾기
-        </button>
+        </Link>
         <span>|</span>
-        <button className="hover:underline" onClick={() => navigate("/signup")}>
+        <Link to="/register" className="hover:underline">
           회원가입
-        </button>
+        </Link>
       </div>
     </div>
   );
