@@ -7,15 +7,12 @@ import MapCanvas from "../components/MapCanvas"; // ✅ 지도 컴포넌트 impo
 const MainPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
       <Header />
 
-      {/* 탭 메뉴 */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-0"></div>
       </div>
 
-      {/* 배너 영역 */}
       <div
         className="w-full h-[420px] bg-cover bg-center flex items-center justify-center"
         style={{
@@ -42,13 +39,11 @@ const MainPage = () => {
         </div>
       </div>
 
-      {/* 본문 + 지도 */}
       <div className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-xl font-semibold mb-4">지도로 보기</h2>
-        <MapCanvas /> {/* ✅ 지도 컴포넌트 삽입 */}
+        <MapCanvas /> 
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

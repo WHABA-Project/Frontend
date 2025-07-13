@@ -35,21 +35,41 @@ export default function Header() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <img src={bellIcon} alt="벨" className="w-5 h-5 hover:opacity-70" />
+          <Link to="/RequestList">
+            <img src={bellIcon} alt="벨" className="w-5 h-5 hover:opacity-70" />
+          </Link>
           <img
             src={heartIcon}
             alt="하트"
             className="w-5 h-5 hover:opacity-70"
           />
-          <img src={userIcon} alt="사람" className="w-5 h-5 hover:opacity-70" />
+          <Link to="/mypage">
+            <img
+              src={userIcon}
+              alt="사람"
+              className="w-5 h-5 hover:opacity-70"
+            />
+          </Link>
         </div>
       </div>
 
       <nav className="border-t">
         <ul className="flex justify-start pl-6 max-w-7xl mx-auto space-x-12 text-sm font-medium py-2">
-          <li className="hover:text-blue-500 cursor-pointer">여행지 소개</li>
-          <li className="hover:text-blue-500 cursor-pointer">가이드 리스트</li>
-          <li className="hover:text-blue-500 cursor-pointer">관광객 리스트</li>
+          <li className="cursor-pointer">
+            <Link to="/" className="hover:text-blue-600">
+              여행지 소개
+            </Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to="/guides" className="hover:text-blue-600">
+              가이드 리스트
+            </Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to="/travelers" className="hover:text-blue-600">
+              관광객 리스트
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
