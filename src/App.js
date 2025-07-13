@@ -15,7 +15,7 @@ import GuideRequestList from "./pages/GuideRequestList";
 import MyPage from "./pages/MyPage";
 import GuideDetail from "./pages/GuideDetail";
 import TravelerDetail from "./pages/TravelerDetail";
-
+import Wishlist from "./pages/Wishlist"; // ✅ 추가
 
 function App() {
   return (
@@ -25,20 +25,23 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/guideregister" element={<GuideRegister />} />
         <Route path="/guides" element={<GuidesPage />} />
-        <Route path="/Travelers" element={<TravelersPage />} />
+        <Route path="/travelers" element={<TravelersPage />} />
         <Route path="/travelerregister" element={<TravelerRegister />} />
         <Route path="/travelerregister2" element={<TravelerRegister2 />} />
-        <Route path="/RequestList" element={<RequestList />} />
-        <Route path="/GuideRequestList" element={<GuideRequestList />} />
-        <Route path="/RegisterSelect" element={<RegisterPage />} />
-        <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/requestlist" element={<RequestList />} />
+        <Route path="/guiderequestlist" element={<GuideRequestList />} />
+        <Route path="/registerselect" element={<RegisterPage />} />
+        <Route path="/mypage" element={<MyPage />} />
         <Route path="/guide/:id" element={<GuideDetail />} />
         <Route path="/traveler/:id" element={<TravelerDetail />} />
 
-        {/* ✅ 추가된 로그인/찾기 라우팅 */}
+        {/* 로그인 및 아이디/비밀번호 찾기 */}
         <Route path="/login" element={<Login />} />
         <Route path="/findid" element={<FindId />} />
         <Route path="/findpw" element={<FindPw />} />
+
+        {/* ✅ Wishlist 페이지 추가 */}
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </Router>
   );

@@ -1,15 +1,48 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import profileImg from "../assets/profile.png";
 
 const GuideCard = ({ guide }) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setIsLiked(wishlist.some((item) => item.username === guide.username));
+  }, [guide.username]);
+
+  const handleLikeClick = (e) => {
+    e.preventDefault(); // Link 이동 막기
+    const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (isLiked) {
+      const updated = wishlist.filter(
+        (item) => item.username !== guide.username
+      );
+      localStorage.setItem("wishlist", JSON.stringify(updated));
+    } else {
+      localStorage.setItem("wishlist", JSON.stringify([...wishlist, guide]));
+    }
+
+    setIsLiked(!isLiked);
+  };
+
   return (
     <Link
       to={`/guide/${guide.username}`}
-      className="bg-white rounded-xl shadow hover:shadow-lg transition cursor-pointer p-4 flex flex-col items-center text-center gap-2 border border-gray-200 hover:border-sky-400"
+      className="bg-white relative rounded-xl shadow hover:shadow-lg transition cursor-pointer p-4 flex flex-col items-center text-center gap-2 border border-gray-200 hover:border-sky-400"
     >
+      {/* ❤️ 하트 버튼 */}
+      <button
+        onClick={handleLikeClick}
+        className="absolute top-3 right-3 text-2xl z-10"
+      >
+        {isLiked ? "❤️" : "🤍"}
+      </button>
+
       <img
         src={profileImg}
         className="w-24 h-24 rounded-full object-cover"
+        alt="Guide Profile"
       />
       <div className="font-semibold text-lg">
         {guide.name} ({guide.age})

@@ -38,11 +38,13 @@ export default function Header() {
           <Link to="/RequestList">
             <img src={bellIcon} alt="벨" className="w-5 h-5 hover:opacity-70" />
           </Link>
-          <img
-            src={heartIcon}
-            alt="하트"
-            className="w-5 h-5 hover:opacity-70"
-          />
+          <Link to="/wishlist">
+            <img
+              src={heartIcon}
+              alt="하트"
+              className="w-5 h-5 hover:opacity-70"
+            />
+          </Link>
           <Link to="/mypage">
             <img
               src={userIcon}

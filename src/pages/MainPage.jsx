@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import searchBackground from "../assets/search.jpg";
-import MapCanvas from "../components/MapCanvas"; // ✅ 지도 컴포넌트 import
+import MapCanvas from "../components/MapCanvas";
 
 const MainPage = () => {
+  const [selectedRegion, setSelectedRegion] = useState(null); // ✅ 선택된 지역 상태
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -41,7 +43,18 @@ const MainPage = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-10">
         <h2 className="text-xl font-semibold mb-4">지도로 보기</h2>
-        <MapCanvas /> 
+        <MapCanvas onRegionClick={setSelectedRegion} />
+
+        {/* ✅ 지역 클릭 시 설명 표시 */}
+        {selectedRegion && (
+          <div className="mt-8 bg-white p-6 rounded-xl shadow text-gray-800 border border-gray-200">
+            <h3 className="text-lg font-bold mb-2">{selectedRegion}</h3>
+            <p className="text-sm">
+              {selectedRegion} 지역은 다양한 문화와 여행지가 있는 곳으로,
+              가이드를 통해 특별한 경험을 만들어보세요.
+            </p>
+          </div>
+        )}
       </div>
 
       <Footer />

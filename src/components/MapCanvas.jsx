@@ -1,7 +1,6 @@
-// components/MapCanvas.jsx
 import React, { useEffect, useRef } from "react";
 
-const MapCanvas = () => {
+const MapCanvas = ({ onRegionClick }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -17,6 +16,7 @@ const MapCanvas = () => {
         let minLat = 90,
           maxLat = -90;
 
+        // 좌표 범위 계산
         json.features.forEach((feat) => {
           const geom = feat.geometry;
           const polys =
@@ -34,6 +34,7 @@ const MapCanvas = () => {
           });
         });
 
+        // 지도 스케일 계산
         const padding = 20;
         const mapW = canvas.width - padding * 2;
         const mapH = canvas.height - padding * 2;
@@ -92,6 +93,7 @@ const MapCanvas = () => {
 
         drawRegions(null);
 
+        // 마우스 오버 시 영역 강조
         canvas.addEventListener("mousemove", (e) => {
           const rect = canvas.getBoundingClientRect();
           const x = e.clientX - rect.left;
@@ -106,9 +108,23 @@ const MapCanvas = () => {
           }
           drawRegions(hoverName);
         });
+
+        // 클릭 시 상위로 지역 이름 전달
+        canvas.addEventListener("click", (e) => {
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          for (const region of regions) {
+            if (region.paths.some((path) => ctx.isPointInPath(path, x, y))) {
+              if (onRegionClick) onRegionClick(region.name);
+              break;
+            }
+          }
+        });
       })
       .catch(console.error);
-  }, []);
+  }, [onRegionClick]);
 
   return (
     <canvas
